@@ -1,0 +1,10 @@
+{
+  "postgres": "postgres://forro_app:asdf1234@forro-postgres:5432/forro_test",
+  "postgres_migration": "postgres://forro_migration:asdf1234@forro-postgres:5432/forro_test",
+  "redis": "redis://redis@forro-redis:6379/15",
+  "auth": {
+    "secret": "xJ0A6fwUy1JpCbPi+W44pP0hsibkaCOBzhgsst/tp37vP9gdZjPaFgz5TqQo+LT9vP2r9D4VEx5ZaGnViqV0TQ==",
+    "accessTokenExpiryTime": 3600,
+    "refreshTokenExpiryTime": 21600
+  }
+}

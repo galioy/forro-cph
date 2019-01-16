@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "moduleResolution": "node",
+    "allowUnreachableCode": false,
+    "declaration": true,
+    "alwaysStrict": true,
+    "types": [
+      "node"
+    ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./declarations"
+    ],
+    "lib": [
+      // Defaults
+      "es6",
+      "dom",
+      "dom.iterable",
+      "scripthost",
+      // Extra
+      "es2016.array.include"
+    ]
+  }
+}

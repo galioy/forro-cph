@@ -1,0 +1,56 @@
+version: '2'
+services:
+  service:
+    build: .
+    ports:
+      - '7100:3000'   # service port
+      - '7101:5858'  # debugger port
+    tty: true
+    volumes:
+      - './app:/app'
+      - '/app/node_modules'
+    command: 'npm run gulp-start'
+    container_name: forro-service
+    environment:
+      - NODE_ENV=development
+      - EXPOSED_PORT=7100
+      - PORT=3000
+
+  redisdata:
+    image: busybox
+    volumes:
+      - /var/lib/redis
+    container_name: forro-redis-data
+
+  redis:
+    image: 'redis:5.0'
+    ports:
+      - '7300:6379'
+    volumes_from:
+      - redisdata
+    container_name: forro-redis
+    networks:
+      - default
+
+  postgresdata:
+    image: busybox
+    volumes:
+      - /var/lib/postgresql
+    container_name: forro-postgres-data
+
+  postgres:
+    image: 'postgres:10.6'
+    ports:
+      - '7200:5432'
+    expose:
+      - '5432'
+    volumes_from:
+      - postgresdata
+    container_name: forro-postgres
+    networks:
+      - default
+
+networks:
+  default:
+    external:
+      name: forro-network
